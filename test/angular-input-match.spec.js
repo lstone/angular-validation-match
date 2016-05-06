@@ -13,7 +13,7 @@ describe('Directives: validation - match', function() {
 
     describe('Directive level validation', function() {
 
-        var validTemplate = '<input ng-model="confirmation" match="original"></input>';
+        var validTemplate = '<input ng-model="confirmation" match="original" enable-matching="true"></input>';
 
         describe('configuration:', function() {
 
@@ -81,7 +81,7 @@ describe('Directives: validation - match', function() {
             element = angular.element(
                 '<form name="form">' +
                 '<input type="text" ng-model="test" name="test"></input>' +
-                '<input type="text" match="form.test" ng-model="testConfirm" name="testConfirm"></input>' +
+                '<input type="text" match="form.test" ng-model="testConfirm" name="testConfirm" enable-matching="true"></input>' +
                 '</form>'
             );
             $scope.test = inputValue;
@@ -113,7 +113,7 @@ describe('Directives: validation - match', function() {
     describe('caseless validation', function() {
 
       describe('behavior:', function() {
-        var validTemplate = '<input ng-model="confirmation" match="original" match-caseless="true"></input>';
+        var validTemplate = '<input ng-model="confirmation" match="original" match-caseless="true" enable-matching="true"></input>';
 
           it('returns true if no model value has been defined', function() {
               compiled = $compile(validTemplate)($scope);
@@ -159,7 +159,7 @@ describe('Directives: validation - match', function() {
             element = angular.element(
                 '<form name="form">' +
                 '<input type="text" ng-model="test" name="test"></input>' +
-                '<input type="text" match="form.test" match-caseless="true" ng-model="testConfirm" name="testConfirm"></input>' +
+                '<input type="text" match="form.test" match-caseless="true" ng-model="testConfirm" name="testConfirm" enable-matching="true"></input>' +
                 '</form>'
             );
             $scope.test = inputValue;
@@ -193,7 +193,7 @@ describe('Directives: validation - match', function() {
     describe('not-match validation', function() {
 
       describe('behavior:', function() {
-        var validTemplate = '<input ng-model="confirmation" match="original" not-match="true"></input>';
+        var validTemplate = '<input ng-model="confirmation" match="original" not-match="true" enable-matching="true"></input>';
 
           it('returns true if no model value has been defined', function() {
               compiled = $compile(validTemplate)($scope);
@@ -239,7 +239,7 @@ describe('Directives: validation - match', function() {
             element = angular.element(
                 '<form name="form">' +
                 '<input type="text" ng-model="test" name="test"></input>' +
-                '<input type="text" match="form.test" not-match="true" ng-model="testConfirm" name="testConfirm"></input>' +
+                '<input type="text" match="form.test" not-match="true" ng-model="testConfirm" name="testConfirm" enable-matching="true"></input>' +
                 '</form>'
             );
             $scope.test = inputValue;
@@ -273,7 +273,7 @@ describe('Directives: validation - match', function() {
     describe('not-match with caseless validation', function() {
 
       describe('behavior:', function() {
-        var validTemplate = '<input ng-model="confirmation" match="original" match-caseless="true" not-match="true"></input>';
+        var validTemplate = '<input ng-model="confirmation" match="original" match-caseless="true" not-match="true" enable-matching="true"></input>';
 
           it('returns true if no model value has been defined', function() {
               compiled = $compile(validTemplate)($scope);
@@ -319,7 +319,7 @@ describe('Directives: validation - match', function() {
             element = angular.element(
                 '<form name="form">' +
                 '<input type="text" ng-model="test" name="test"></input>' +
-                '<input type="text" match="form.test" match-caseless="true" not-match="true" ng-model="testConfirm" name="testConfirm"></input>' +
+                '<input type="text" match="form.test" match-caseless="true" not-match="true" ng-model="testConfirm" name="testConfirm" enable-matching="true"></input>' +
                 '</form>'
             );
             $scope.test = inputValue;
@@ -353,7 +353,7 @@ describe('Directives: validation - match', function() {
     describe('non-text validation', function() {
 
       describe('behavior:', function() {
-        var validTemplate = '<input ng-model="confirmation" type="number" match="original"></input>';
+        var validTemplate = '<input ng-model="confirmation" type="number" match="original" enable-matching="true"></input>';
 
           it('returns true if no model value has been defined', function() {
               compiled = $compile(validTemplate)($scope);
@@ -391,7 +391,7 @@ describe('Directives: validation - match', function() {
             element = angular.element(
                 '<form name="form">' +
                 '<input type="number" ng-model="test" name="test"></input>' +
-                '<input type="number" match="test" ng-model="testConfirm" name="testConfirm"></input>' +
+                '<input type="number" match="test" ng-model="testConfirm" name="testConfirm" enable-matching="true"></input>' +
                 '</form>'
             );
             $scope.test = inputValue;
