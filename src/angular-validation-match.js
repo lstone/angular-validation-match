@@ -17,31 +17,31 @@ function match ($parse) {
             var caselessGetter = $parse(attrs.matchCaseless);
             var noMatchGetter = $parse(attrs.notMatch);
             var matchIgnoreEmptyGetter = $parse(attrs.matchIgnoreEmpty);
-            var disableMatchingGetter = $parse(attrs.disableMatching);
+            var enableMatchingGetter = $parse(attrs.enableMatching);
 
             scope.$watch(getMatchValue, function(){
                 ctrl.$$parseAndValidate();
             });
 
             ctrl.$validators.match = function(modelValue, viewValue){
-              var matcher = modelValue || viewValue;
-              var match = getMatchValue();
-              var notMatch = noMatchGetter(scope);
-              var value;
+                var matcher = modelValue || viewValue;
+                var match = getMatchValue();
+                var notMatch = noMatchGetter(scope);
+                var value;
 
-              if ((matchIgnoreEmptyGetter(scope) && !viewValue) || disableMatchingGetter) {
-                return true;
-              }
+                if ((matchIgnoreEmptyGetter(scope) && !viewValue) || enableMatchingGetter(scope) != true) {
+                    return true;
+                }
 
-              if(caselessGetter(scope)){
-                value = angular.lowercase(matcher) === angular.lowercase(match);
-              }else{
-                value = matcher === match;
-              }
-              /*jslint bitwise: true */
-              value ^= notMatch;
-              /*jslint bitwise: false */
-              return !!value;
+                if(caselessGetter(scope)){
+                    value = angular.lowercase(matcher) === angular.lowercase(match);
+                }else{
+                    value = matcher === match;
+                }
+                /*jslint bitwise: true */
+                value ^= notMatch;
+                /*jslint bitwise: false */
+                return !!value;
             };
 
             function getMatchValue(){
