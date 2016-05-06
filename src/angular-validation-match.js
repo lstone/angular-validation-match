@@ -17,6 +17,7 @@ function match ($parse) {
             var caselessGetter = $parse(attrs.matchCaseless);
             var noMatchGetter = $parse(attrs.notMatch);
             var matchIgnoreEmptyGetter = $parse(attrs.matchIgnoreEmpty);
+            var disableMatchingGetter = $parse(attrs.disableMatching);
 
             scope.$watch(getMatchValue, function(){
                 ctrl.$$parseAndValidate();
@@ -28,7 +29,7 @@ function match ($parse) {
               var notMatch = noMatchGetter(scope);
               var value;
 
-              if (matchIgnoreEmptyGetter(scope) && !viewValue) {
+              if ((matchIgnoreEmptyGetter(scope) && !viewValue) || disableMatchingGetter) {
                 return true;
               }
 
