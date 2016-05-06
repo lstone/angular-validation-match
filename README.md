@@ -27,6 +27,8 @@ Also: `npm install angular-validation-match`
 Usage
 -----
 
+NOTE: this version specifically requires you to add an enable-matching="myBoolean" attribute when you use this plugin.
+
 **Simple Property Example**
 
 ```html
